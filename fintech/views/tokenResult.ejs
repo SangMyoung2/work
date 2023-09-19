@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발급받은 사용자 토큰</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#addBtn").click(function(){
+
+                var name = $('#name').val()
+                var email = $('#email').val()
+                var password = $('#password').val()
+                var accessToken = $('#accessToken').val()
+                var refreshToken = $('#refreshToken').val()
+                var userSeqNo = $('#userSeqNo').val()
+
+                if(!name) return
+
+                $.ajax({
+                    type:'POST',
+                    url:'/addUser',
+                    data:{
+                        name:name,
+                        email:email,
+                        password:password,
+                        accessToken:accessToken,
+                        refreshToken:refreshToken,
+                        userSeqNo:userSeqNo
+                    },
+                    success:function(data){
+                        alert(data)
+                    }
+                })
+                location.replace('/')
+            })
+        });
+
+    </script>
+
+</head>
+<body>
+
+<div><input type="text" id="name" placeholder="이름"/></div>
+<div><input type="text" id="email" placeholder="이메일"/></div>
+<div><input type="text" id="password" placeholder="비밀번호"/></div>
+
+<div><textarea cols="70" rows="10" id="accessToken" placeholder="AccessToken" disabled><%=data.access_token%></textarea></div>
+<div><textarea cols="70" rows="10" id="refreshToken" placeholder="RefreshToken" disabled><%=data.refresh_token%></textarea></div>
+<div><input type="text" id="userSeqNo" value="<%=data.user_seq_no%>" placeholder="userSeqNo" disabled/></div>
+<button id="addBtn">회원가입</button>
+
+</body>
+</html>

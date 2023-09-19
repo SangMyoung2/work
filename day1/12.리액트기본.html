@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Page Title</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+</head>
+<body>
+
+    <div id="root">화면에 보여질 부분 - 그려질 부분</div>
+    
+    <script type="text/babel"> //"text/babel" = JSX 영역이라고 부른다.(Javascript + XML)\
+
+        const name = '정인선'
+        const age = 30
+        const addr = '서울'
+
+        const el = (
+            <div>
+                <h2>신상 명세서</h2>
+                <ul>
+                    <li>이름: {name}</li>
+                    <li>나이: {age}</li>
+                    <li>주소: {addr}</li>
+                </ul>
+            </div>
+        )
+
+        const dom = document.querySelector('#root') //실제 DOM
+        ReactDOM.render(el,dom) //가상DOM을 실제DOM에 넣어줌
+
+    </script>
+
+
+</body>
+</html>

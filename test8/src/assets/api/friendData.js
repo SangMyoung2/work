@@ -1,0 +1,32 @@
+export default [
+    {
+        id:1,
+        name:'배수지',
+        age:28,
+        image:'https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201908%2F20190829111126539.jpg',
+    },
+    {
+        id:2,
+        name:'유인나',
+        age:40,
+        image:'https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201810%2F20181001163144951.jpg',
+    },
+    {
+        id:3,
+        name:'정인선',
+        age:32,
+        image:'https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202010%2F20201030192730964.jpg',
+    },
+    {
+        id:4,
+        name:'박신혜',
+        age:33,
+        image:'https://search.pstatic.net/common?type=b&size=336&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221028160014958.jpg',
+    },
+    {
+        id:5,
+        name:'김희선',
+        age:44,
+        image:'https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F46%2F20220411181535111.png',   
+    }
+]

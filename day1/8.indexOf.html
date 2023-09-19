@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        const arr = ['고구마','감자','고기','고단백','수고','수영']
+
+        const text1 = '고'
+
+        //'고'가 들어가는 단어 배열에서 찾기
+        const result1 = arr.filter(item=>item.indexOf(text1)!==-1) 
+        console.log(result1)
+
+        const data = [
+            {act:'운동을하다.'},
+            {act:'영화를보다.'},
+            {act:'저녁을먹다.'},
+            {act:'게임을하다.'},
+            {act:'공부를하다.'},
+        ]
+
+        const text2 = '하다'
+        //하다가 들어가는 단어 객체에서 찾기
+        const result2 = data.filter(item=>item.act.indexOf(text2)!==-1)
+        console.log(result2)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

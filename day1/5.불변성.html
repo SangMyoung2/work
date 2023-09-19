@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>배열 넣기</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        const arr1 = [10,20,30,40,50]
+
+        //누적해서 배열에 데이터 넣기
+        arr1.push(60)
+        arr1.push(70)
+        arr1.push(80)
+
+        console.log(arr1)
+
+        //concat : 데이터를 추가할때 사용 //원본은 그대로 복사한다.
+        const arr2 = [10,20,30,40,50]
+        const arr3 = arr2.concat() //arr2의 배열을 그대로 복사
+        const arr4 = arr2.concat(60,70,80) //arr2의 배열을 복사하고 60,50,80 데이터를 추가한다.
+        console.log('----------------------------')
+        console.log(arr2)
+        console.log(arr3)
+        console.log(arr4)
+        
+        console.log('----------------------------')
+        const arr5 = arr2.slice(1,3) //배열 1에서 시작해서 2개의 문자를 출력 20,30 출력 //3에서 -1까지 출력함
+        console.log(arr5)
+
+        console.log('----------------------------')
+        //배열 객체
+        const data = [
+            {id:1,name:'배수지',age:27},
+            {id:2,name:'김수지',age:28},
+            {id:3,name:'이수지',age:29},
+            {id:4,name:'최수지',age:30},
+            {id:5,name:'박수지',age:31}
+        ]
+
+        const data1 = data.concat()
+        const data2 = data.concat({
+            id:6,
+            name:'박신혜',
+            age:35
+        })
+
+        console.log(data1)
+        console.log(data2)
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

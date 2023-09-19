@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        const arr = [10,30,40,50,80,100,30]
+
+        //arr있는 데이터를 하나씩 꺼내서
+
+        //item은 변수이름 다른이름으로 작성해도 상관없음
+        const result1 = arr.filter(item => item>50) //50보다 큰데이터 출력
+        console.log(result1)
+
+        const result2 = arr.filter(item => item===30) //30이랑 같은 데이터 출력
+        console.log(result2)
+        
+        const result3 = arr.filter(item => item!==30) //30이랑 같지않은 데이터 출력
+        console.log(result3)
+
+        const data = [
+            {id:1,name:'배수지',age:27},
+            {id:2,name:'김수지',age:28},
+            {id:3,name:'이수지',age:29},
+            {id:4,name:'최수지',age:30},
+            {id:5,name:'박수지',age:31}
+        ]
+
+        const data1 = data.filter(item => item.id !== 3) //id가 3하고 같지 않은 데이터만 출력
+        console.log(data1)
+
+        data.filter((item,index) => index>2) //index 필터로 데이터를 꺼내서 
+        .map(item=>console.log(item.name)) //map반복문으로 데이터를 하나씩 꺼내 출력한다. //최수지,박수지
+
+        const result4 = arr.find(item => item > 16)
+        console.log(result4) //30 데이터 1개만 출력한다. //16보다 큰 데이터 처음에 출력되는 1개의 데이터만 보여준다.
+        
+
+        const result5 = arr.findIndex(item => item > 16) //findIndex 조건의 맞는 데이터를 인덱스로 찾는다
+        console.log(result5)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

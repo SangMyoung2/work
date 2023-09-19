@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잔액조회</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            var loginToken = sessionStorage.getItem('loginToken')
+
+            if(loginToken==null){
+                alert('로그인 해주세요')
+                location.href='/login'
+                return
+            }   
+
+            $('#balanceBtn').click(function(){
+
+                var email = $('#email').val()
+
+                if(!email) return
+
+                $.ajax({
+                    url:'/balanceInfo',
+                    type:'post',
+                    data:{email:email},
+                    success:function(data){
+                        // alert(data)
+
+                        var str = ""
+
+                        str += "거래일자: " + data.bank_tran_date + "<br/>"
+                        str += "계좌잔액: " + data.balance_amt + "<br/>"
+                        str += "출금가능금액: " + data.available_amt + "<br/>"
+                        str += "상품명: " + data.product_name + "<br/>"
+                        str += "개설기관명: " + data.bank_name + "<br/>"
+
+                        $('#resultDiv').html(str)
+                    }
+                })
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+    <h1><%=title%></h1>
+    <div><input type="email" id="email" placeholder="이메일"/></div>
+    <button id="balanceBtn">잔액조회</button>
+    <br/>
+    <br/>
+    <div id="resultDiv"></div>
+
+</body>
+</html>

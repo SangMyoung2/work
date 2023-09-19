@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>거래내역조회</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            var loginToken = sessionStorage.getItem('loginToken')
+
+            if(loginToken==null){
+                alert('로그인 해주세요')
+                location.href='/login'
+                return
+            }   
+
+            $('#tranBtn').click(function(){
+
+                var email = $('#email').val()
+                var fromDate = $('#fromDate').val()
+                var toDate = $('#toDate').val()
+                var sortOrder = $('#sortOrder').val()
+                var inquiryType = $('#inquiryType').val()
+
+                if(!email) return
+
+                $.ajax({
+                    url:'/transactionList',
+                    type:'post',
+                    data:{
+                        email:email,
+                        fromDate:fromDate,
+                        toDate:toDate,
+                        inquiryType:inquiryType,
+                        sortOrder:sortOrder
+                    },
+                    success:function(data){
+
+                        var str = ""
+
+                        str += "*******************************<br/>"
+                        str += "개설기관명: " + data.bank_name + "<br/>"
+                        str += "현재페이지 레코드 건수: " + data.page_record_cnt + "<br/>"
+                        str += "계좌잔액: " + data.balance_amt + "<br/>"
+                        str += "*******************************<br/>"
+
+                        for(var i=0;i<data.res_list.length;i++){
+                            
+                            str += "거래일자: " + data.res_list[i].tran_date + "<br/>"
+                            str += "거래시간: " + data.res_list[i].tran_time + "<br/>"
+                            str += "입출금구분: " + data.res_list[i].inout_type + "<br/>"
+                            str += "통장인자내용: " + data.res_list[i].print_content + "<br/>"
+                            str += "거래금액: " + data.res_list[i].tran_amt + "<br/>"
+                            str += "거래후잔액: " + data.res_list[i].after_balance_amt + "<br/>"
+                            str += "거래점명: " + data.res_list[i].branch_name + "<br/>"
+                            
+                            str += "*******************************<br/>"
+                        }
+
+                        $('#resultDiv').html(str)
+                    }
+                })
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+    <h1><%=title%></h1>
+    <div><input type="email" id="email" placeholder="이메일"/></div>
+
+    <div>조회시작일자 : <input type="date" id="fromDate"/></div>
+    <div>조회종료일자 : <input type="date" id="toDate"/></div>
+    <div>
+        정렬순서 : 
+        <select id="sortOrder">
+            <option value="A">오름차순</option>
+            <option value="D">내림차순</option>
+        </select>
+    </div>
+    <div>
+        조회구분 : 
+        <select id="inquiryType">
+            <option value="A">전체</option>
+            <option value="I">입금</option>
+            <option value="O">출금</option>
+        </select>
+    </div>
+
+    <button id="tranBtn">거래내역조회</button>
+    <br/>
+    <br/>
+    <div id="resultDiv"></div>
+
+</body>
+</html>

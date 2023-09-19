@@ -1,0 +1,8 @@
+*{margin: 0; padding: 0;}
+.gallery {width: 1400px; margin: auto;}
+.gallery h2 {text-align: center; font-size: 25px; padding: 20px;}
+.gallery .con-box {width: 100%; display: flex; flex-wrap: wrap;}
+.gallery .con-box article {width: 300; padding: 10px; border: 1px solid #dcdcdc; margin-right: 15px;}
+.gallery .con-box img {width: 300px; height: 450px;}
+.gallery .con-box h3 {font-size: 20px; margin-top: 20px; margin-bottom: 15px;}
+.gallery .con-box .p {margin-bottom: 5px;}

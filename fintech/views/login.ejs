@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+
+    <script>
+        $(document).ready(function(){
+
+            $('#loginBtn').click(function(){
+                var email = $('#email').val()
+                var password = $('#password').val()
+
+                $.ajax({
+                    url:'/authLogin',
+                    type:'POST',
+                    data:{
+                        email:email,
+                        password:password
+                    },
+                    success:function(data){
+                        if(data=='이메일을 확인하세요'||data=='패스워드를 확인하세요'){
+                            alert(data)
+                        }else{
+                            //서버에서 발급받은 JWT를 세션 스토리지에 저장
+                            sessionStorage.setItem('loginToken',data)
+                            location.replace('/')
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <h1><%=title%></h1>
+    <div><input type="text" id="email" placeholder="이메일"/></div>
+    <div><input type="password" id="password" placeholder="패스워드"/></div>
+    <button id="loginBtn">로그인</button>
+</body>
+</html>
